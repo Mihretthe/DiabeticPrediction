@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Diabetes Prediction</h1>
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="pregnancies">Pregnancies:</label>
+                <input type="number" class="form-control" id="pregnancies" name="pregnancies" required>
+                <div class="invalid-feedback">Please enter the number of pregnancies.</div>
+            </div>
+            <div class="form-group">
+                <label for="glucose">Glucose:</label>
+                <input type="number" class="form-control" id="glucose" name="glucose" required>
+                <div class="invalid-feedback">Please enter the glucose level.</div>
+            </div>
+            <div class="form-group">
+                <label for="blood_pressure">Blood Pressure:</label>
+                <input type="number" class="form-control" id="blood_pressure" name="blood_pressure" required>
+                <div class="invalid-feedback">Please enter the blood pressure.</div>
+            </div>
+            <div class="form-group">
+                <label for="skin_thickness">Skin Thickness:</label>
+                <input type="number" class="form-control" id="skin_thickness" name="skin_thickness" required>
+                <div class="invalid-feedback">Please enter the skin thickness.</div>
+            </div>
+            <div class="form-group">
+                <label for="insulin">Insulin:</label>
+                <input type="number" class="form-control" id="insulin" name="insulin" required>
+                <div class="invalid-feedback">Please enter the insulin level.</div>
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI:</label>
+                <input type="number" class="form-control" id="bmi" name="bmi" required>
+                <div class="invalid-feedback">Please enter the BMI.</div>
+            </div>
+            <div class="form-group">
+                <label for="diabetes_pedigree_function">Diabetes Pedigree Function:</label>
+                <input type="number" class="form-control" id="diabetes_pedigree_function" name="diabetes_pedigree_function" required>
+                <div class="invalid-feedback">Please enter the diabetes pedigree function.</div>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" class="form-control" id="age" name="age" required>
+                <div class="invalid-feedback">Please enter the age.</div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </form>
+        {% if prediction %}
+            <div class="alert alert-info mt-4">
+                <p class="text-center mb-0">Prediction: {{ prediction }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Form validation script -->
+    <script>
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>
