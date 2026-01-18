@@ -1,1 +1,1 @@
-web: gunicorn diabetic_prediction.wsgi
+web: gunicorn myproject.wsgi
